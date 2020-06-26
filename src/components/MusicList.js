@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 export default function MusicList(props) {
 
 	const { musicGenre, title } = props
 
-	const allMusic = musicGenre.map((musica) => {
-		const { CANTOR, TITULO } = musica
-		return (
-			CANTOR, TITULO
-		)
-	})
+	// const allMusic = musicGenre.map((musica) => {
+	// 	const { CANTOR, TITULO } = musica
+	// 	return (
+	// 		CANTOR, TITULO
+	// 	)
+	// })
 
-	const [searchTerm, setSearchTerm] = useState("");
-	const [searchResults, setSearchResults] = useState([]);
+	// const [searchTerm, setSearchTerm] = useState("");
+	// const [searchResults, setSearchResults] = useState([]);
 
-	const handleChange = event => {
-		setSearchTerm(event.target.value);
-	};
+	// const handleChange = event => {
+	// 	setSearchTerm(event.target.value);
+	// };
 
-	useEffect(() => {
-		const filterMusic = allMusic.filter(music =>
-			music.toLowerCase().includes(searchTerm)
-		)
-		setSearchResults(filterMusic)
-	}, [searchTerm, allMusic])
+	// useEffect(() => {
+	// 	const filterMusic = allMusic.filter(music =>
+	// 		music.toLowerCase().includes(searchTerm)
+	// 	)
+	// 	setSearchResults(filterMusic)
+	// }, [searchTerm, allMusic])
 
 
 	return (
 		<>
-			<input
+			{/* <input
 				type="text"
 				className="input"
 				value={searchTerm}
 				onChange={handleChange}
-			/>
+			/> */}
 
-			{searchResults.map((musica, indice) => {
+			{musicGenre.map((musica, indice) => {
 				const { NUMERO, CANTOR, TITULO, INICIO } = musica
 				return (
 					<div key={indice} className="container">
