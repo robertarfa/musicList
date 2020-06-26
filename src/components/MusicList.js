@@ -52,6 +52,7 @@ export default function MusicList(props) {
 						<p>
 							Início da música: {INICIO}
 						</p>
+						<p><a href="#">Voltar para o início da lista</a></p>
 					</div>
 				)
 			})}

@@ -1,6 +1,12 @@
 .title {
   text-align: center;
 }
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .input {
   padding: 10px;
   margin: 0;
