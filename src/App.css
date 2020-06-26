@@ -1,11 +1,26 @@
-.tableContainer {
-  width: 100%;
-  border-collapse: collapse;
+.title {
+  text-align: center;
+}
+.input {
+  padding: 10px;
+  margin: 0;
+  width: 80%;
 }
 
-td,
-th {
+input {
+  width: 80%;
+}
+
+.container {
+  margin: 10px auto;
+  width: 80%;
   border: 1px solid lightgray;
+  box-shadow: 2px 2px 5px purple;
+  background-color: rgb(209, 191, 209);
   padding: 5px;
   font-size: 18px;
+}
+
+p {
+  font-weight: bold;
 }
