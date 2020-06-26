@@ -1,0 +1,13 @@
+.carregando {
+  margin: 0 auto;
+  width: 80%;
+  height: 95vh;
+  padding: 5%;
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  font-size: x-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
