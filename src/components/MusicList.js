@@ -61,6 +61,7 @@ export default function MusicList(props) {
 	 <input type="text" onChange={handleChange} value={searchTerm} />
       <input type="button" onClick={handleFilter} value="Pesquisar" />
 
+		<div>
 			{filteredMusic.length === 0 ? musicGenre.map((musica, indice) => {
 				const { NUMERO, CANTOR, TITULO, INICIO } = musica
 				return (
@@ -83,6 +84,8 @@ export default function MusicList(props) {
 					</div>
 				)
 			}) : filteredMusic}
+
+</div>
 		</>
 	)
 }
