@@ -7,12 +7,12 @@ export default function MusicList(props) {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 
-	const allMusic = musicGenre.map((musica) => {
-	 	const { NUMERO, CANTOR, TITULO, INICIO  } = musica
-	 	return (
-	 		NUMERO, CANTOR, TITULO, INICIO 
-	 	)
-	})
+	//const allMusic = musicGenre.map((musica) => {
+	 //	const { NUMERO, CANTOR, TITULO, INICIO  } = musica
+	// 	return (
+	// 		NUMERO, CANTOR, TITULO, INICIO 
+	// 	)
+	//})
 
 	
 	const handleChange = event => {
