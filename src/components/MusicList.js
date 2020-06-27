@@ -27,11 +27,9 @@ export default function MusicList(props) {
 	// }, [searchTerm, allMusic])
   const handleFilter = () => {
     const filterMusic = musicGenre.filter((music) =>
-      music.TITULO.toLowerCase().includes(searchTerm)
-                                        ||  music.TITULO.includes(searchTerm) 
-					//&&
-					//music.CANTOR.toLowerCase().includes(searchTerm)
-                                        //||  music.CANTOR.includes(searchTerm)
+      (music.TITULO.includes(searchTerm) || music.TITULO.toLowerCase().includes(searchTerm)) &&
+					(music.CANTOR.includes(searchTerm)
+                                        ||  music.CANTOR.toLowerCase().includes(searchTerm))
     );
     setSearchResults(filterMusic);
    };
