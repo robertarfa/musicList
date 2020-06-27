@@ -26,7 +26,7 @@ export default function MusicList(props) {
 	// 	setSearchResults(filterMusic)
 	// }, [searchTerm, allMusic])
   const handleFilter = () => {
-    const filterMusic = allMusic.filter((music) =>
+    const filterMusic = musicGenre.filter((music) =>
       music.TITULO.toLowerCase().includes(searchTerm)
                                         ||  music.TITULO.includes(searchTerm) 
 					//&&
