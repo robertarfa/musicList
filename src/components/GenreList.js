@@ -78,7 +78,7 @@ export default function GenreList() {
 						</div>
 					)
 				})
-					: filtered Music = "Não encontrado" } 
+					: filteredMusic = "Não encontrado" } 
 			</div>
 		</>
 	)
