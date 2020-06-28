@@ -26,7 +26,7 @@ export default function GenreList() {
 		setSearchResults(filterMusic);
 	};
 
-	const filteredMusic = searchResults.map((musica, indice) => {
+	let filteredMusic = searchResults.map((musica, indice) => {
 		const { NUMERO, CANTOR, TITULO, INICIO } = musica
 		return (
 			<div key={indice} className="container">
