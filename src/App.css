@@ -1,5 +1,56 @@
-.input{
-  margin: 20px 30%;
+.input {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+input {
+  margin: 0 20px;
+}
+
+input[type='text'] {
+  width: 50%;
+  padding: 1%;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+input[type='text']:focus {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  outline: 0px auto;
+  outline-offset: 0px;
+  border-color: blueviolet;
+}
+
+input[type='button'] {
+  background-color: rebeccapurple;
+  color: white;
+  font-weight: bold;
+  box-shadow: 2px 3px 5px gray;
+  cursor: pointer;
+  border: 0;
+  border-radius: 20px 50px;
+  width: 100px;
+}
+
+input[type='button']:active,
+input[type='button']:hover {
+  background-color: white; /* Green */
+  color: rebeccapurple;
+}
+
+input[type='button']:active {
+  background-color: white; /* Green */
+  color: rebeccapurple;
+  box-shadow: -2px -2px 8px gray;
+}
+
+input[type='button']:focus {
+  outline: 0px auto;
+  outline-offset: 0px;
 }
 
 .title {
@@ -9,16 +60,6 @@
 a {
   text-decoration: none;
   cursor: pointer;
-}
-
-.input {
-  padding: 10px;
-  margin: 0;
-  width: 80%;
-}
-
-input {
-  width: 80%;
 }
 
 .container {
