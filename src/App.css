@@ -1,15 +1,26 @@
+.principalTitle {
+  text-align: center;
+}
+
+.notFound {
+  text-align: center;
+}
 .input {
   display: flex;
   justify-content: center;
   margin: 20px;
 }
 
-input {
-  margin: 0 20px;
+label {
+  font-size: 1.2rem;
+}
+input,
+label {
+  margin: 10px;
 }
 
 input[type='text'] {
-  width: 50%;
+  width: 100%;
   padding: 1%;
   border-top: 0;
   border-left: 0;
@@ -25,7 +36,7 @@ input[type='text']:focus {
   border-color: blueviolet;
 }
 
-input[type='button'] {
+button[type='submit'] {
   background-color: rebeccapurple;
   color: white;
   font-weight: bold;
@@ -34,21 +45,22 @@ input[type='button'] {
   border: 0;
   border-radius: 20px 50px;
   width: 100px;
+  height: 30px;
 }
 
-input[type='button']:active,
-input[type='button']:hover {
+button[type='submit']:active,
+button[type='submit']:hover {
   background-color: white; /* Green */
   color: rebeccapurple;
 }
 
-input[type='button']:active {
+button[type='submit']:active {
   background-color: white; /* Green */
   color: rebeccapurple;
   box-shadow: -2px -2px 8px gray;
 }
 
-input[type='button']:focus {
+button[type='submit']:focus {
   outline: 0px auto;
   outline-offset: 0px;
 }

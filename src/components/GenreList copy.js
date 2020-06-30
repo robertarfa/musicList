@@ -9,9 +9,9 @@ export default function GenreList() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 
-	const handleSubmit = (event) => {
-		event.preventDefault()
-	}
+	const handleChange = event => {
+		setSearchTerm(event.target.value);
+	};
 
 	const handleFilter = () => {
 		const filterMusic = LISTA.filter((music) => {
@@ -19,21 +19,18 @@ export default function GenreList() {
 			return (
 				(TITULO.toLowerCase().includes(searchTerm))
 				|| (TITULO.includes(searchTerm))
-				|| (CANTOR.includes(searchTerm))
 				|| (CANTOR.toLowerCase().includes(searchTerm))
+				|| (CANTOR.includes(searchTerm))
 			)
 		});
 		setSearchResults(filterMusic);
 	};
 
-	const handleCleanSearch = () => {
-		setSearchResults([])
-	}
-
 	const filteredMusic = searchResults.map((music, indice) => {
 		const { NUMERO, CANTOR, TITULO, INICIO } = music
 		return (
 			<div key={indice} className="container">
+
 				<p >
 					Código: {NUMERO}
 				</p>
@@ -54,26 +51,11 @@ export default function GenreList() {
 
 	return (
 		<>
-			<div className="input" >
-
-				<form onSubmit={handleSubmit}>
-					<div>
-						<label> Digite o nome do cantor ou música:</label>
-						<input type="text" onChange={e => setSearchTerm(e.target.value)} />
-					</div>
-					<div>
-						<button type="submit" onClick={handleFilter}>Pesquisar</button>
-						<button type="submit" onClick={handleCleanSearch}> Limpar</button>
-					</div>
-				</form>
-
+			<div className="input">
+				<input type="text" onChange={handleChange} value={searchTerm} />
+				<input type="button" onClick={handleFilter} value="Pesquisar" />
 			</div>
 			<div>
-
-				{/* <div className="notFound">
-					{searchTerm.length > 0 && searchTerm !== filteredMusic ? <span>Não encontrado</span> : filteredMusic === ''}
-				</div> */}
-
 				{filteredMusic.length === 0 ? LISTA.map((music, indice) => {
 					const { NUMERO, CANTOR, TITULO, INICIO } = music
 					return (
