@@ -96,7 +96,7 @@ export default function GenreList() {
 						</div>
 					)
 				})
-					: filteredMusic}
+					: filteredMusic} 
 			</div>
 		</>
 	)
