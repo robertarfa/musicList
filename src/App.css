@@ -48,6 +48,12 @@ button[type='submit'] {
   height: 30px;
 }
 
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 button[type='submit']:active,
 button[type='submit']:hover {
   background-color: white; /* Green */

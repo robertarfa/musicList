@@ -23,11 +23,23 @@ export default function GenreList() {
 				|| (CANTOR.toLowerCase().includes(searchTerm))
 			)
 		});
-		setSearchResults(filterMusic);
+
+		filterMusic.length === 0 ?
+			setSearchResults([{
+				NUMERO: "Não encontrado",
+				CANTOR: "Não encontrado",
+				TITULO: "Não encontrado",
+				INICIO: "Não encontrado"
+			}])
+			: setSearchResults(filterMusic);
+
+
+		document.getElementById("form").reset();
 	};
 
 	const handleCleanSearch = () => {
 		setSearchResults([])
+		document.getElementById("form").reset();
 	}
 
 	const filteredMusic = searchResults.map((music, indice) => {
@@ -52,27 +64,23 @@ export default function GenreList() {
 		)
 	})
 
+
 	return (
 		<>
 			<div className="input" >
 
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} id="form">
 					<div>
 						<label> Digite o nome do cantor ou música:</label>
-						<input type="text" onChange={e => setSearchTerm(e.target.value)} />
+						<input type="text" id="textSubmit" onChange={e => setSearchTerm(e.target.value)} />
 					</div>
-					<div>
+					<div className="button">
 						<button type="submit" onClick={handleFilter}>Pesquisar</button>
 						<button type="submit" onClick={handleCleanSearch}> Limpar</button>
 					</div>
 				</form>
-
 			</div>
 			<div>
-
-				{/* <div className="notFound">
-					{searchTerm.length > 0 && searchTerm !== filteredMusic ? <span>Não encontrado</span> : filteredMusic === ''}
-				</div> */}
 
 				{filteredMusic.length === 0 ? LISTA.map((music, indice) => {
 					const { NUMERO, CANTOR, TITULO, INICIO } = music
@@ -96,8 +104,9 @@ export default function GenreList() {
 						</div>
 					)
 				})
-					: filteredMusic} 
+					: filteredMusic}
 			</div>
+
 		</>
 	)
 }
