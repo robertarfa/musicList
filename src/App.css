@@ -83,7 +83,7 @@ a {
 .container {
   margin: 10px auto;
   max-width: 500px;
-  width: 100%;
+  width: 80%;
   border: 1px solid lightgray;
   box-shadow: 2px 2px 5px purple;
   background-color: rgb(255, 255, 255);
