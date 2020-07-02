@@ -1,71 +1,114 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import music from '../data/data.json'
-// import MusicList from './MusicList'
 
 export default function GenreList() {
 
+	const [allMusic, setAllMusic] = useState([])
+	const [filteredList, setFilteredList] = useState('')
+
 	const { LISTA } = music
 
-	const [searchTerm, setSearchTerm] = useState("");
-	const [searchResults, setSearchResults] = useState([]);
+	const listAll = LISTA.map(({ NUMERO, CANTOR, TITULO, INICIO }) => {
+		return (
+			{
+				NUMERO,
+				CANTOR,
+				CantorNoAccentLower: Slugify(CANTOR.toLowerCase()),
+				CantorToLower: CANTOR.toLowerCase(),
+				CantorFirstUpper: toUpperFirstLetter(CANTOR),
+				CantorFirstUpperNoAccent: Slugify(toUpperFirstLetter(CANTOR)),
+				CantorToUpper: CANTOR.toUpperCase(),
+				TITULO,
+				TituloNoAccentLower: Slugify(TITULO.toLowerCase()),
+				TituloToLower: TITULO.toLowerCase(),
+				TituloFirstUpper: toUpperFirstLetter(TITULO),
+				TituloFirstUpperNoAccent: Slugify(toUpperFirstLetter(TITULO)),
+				TituloToUpper: TITULO.toUpperCase(),
+				INICIO,
+			}
+		)
+	})
+
+	useEffect(() => {
+		setAllMusic(listAll)
+	}, [])
+
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
 	}
 
 	const handleFilter = () => {
-		const filterMusic = LISTA.filter((music) => {
-			const { TITULO, CANTOR } = music
+		const filterMusic = listAll.filter((music) => {
+			const {
+				TituloToLower,
+				TituloFirstUpper,
+				TituloFirstUpperNoAccent,
+				TituloNoAccentLower,
+				TituloToUpper,
+				CantorToLower,
+				CantorFirstUpper,
+				CantorFirstUpperNoAccent,
+				CantorToUpper,
+				CantorNoAccentLower
+			} = music
 			return (
-				(TITULO.toLowerCase().includes(searchTerm))
-				|| (TITULO.includes(searchTerm))
-				|| (CANTOR.includes(searchTerm))
-				|| (CANTOR.toLowerCase().includes(searchTerm))
-|| (CANTOR.toUpperCase().includes(searchTerm))
-||(TITULO.toUpperCase().includes(searchTerm))
+				(TituloToLower.includes(filteredList))
+				|| (TituloFirstUpper.includes(filteredList))
+				|| (TituloNoAccentLower.includes(filteredList))
+				|| (TituloFirstUpperNoAccent.includes(filteredList))
+				|| (TituloToUpper.includes(filteredList))
+				|| (CantorToLower.includes(filteredList))
+				|| (CantorFirstUpper.includes(filteredList))
+				|| (CantorToUpper.includes(filteredList))
+				|| (CantorNoAccentLower.includes(filteredList))
+				|| (CantorFirstUpperNoAccent.includes(filteredList))
+
 			)
 		});
 
 		filterMusic.length === 0 ?
-			setSearchResults([{
+			setAllMusic([{
 				NUMERO: "Não encontrado",
 				CANTOR: "Não encontrado",
 				TITULO: "Não encontrado",
 				INICIO: "Não encontrado"
 			}])
-			: setSearchResults(filterMusic);
+			: setAllMusic(filterMusic);
 
-
-		document.getElementById("form").reset();
 	};
 
 	const handleCleanSearch = () => {
-		setSearchResults([])
+		setAllMusic(listAll)
 		document.getElementById("form").reset();
 	}
 
-	const filteredMusic = searchResults.map((music, indice) => {
-		const { NUMERO, CANTOR, TITULO, INICIO } = music
-		return (
-			<div key={indice} className="container">
-				<p >
-					Código: {NUMERO}
-				</p>
-				<p>
-					Cantor: {CANTOR}
-				</p>
-				<p>
-					Título: {TITULO}
-				</p>
-				<p>
-					Início da música: {INICIO}
-				</p>
-				{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-				<p><a href="#">Voltar para o início da lista</a></p>
-			</div>
-		)
-	})
+	function Slugify(str) {
+		var map = {
+			'-': ' ',
+			'-': '_',
+			'a': 'á|à|ã|â|À|Á|Ã|Â',
+			'e': 'é|è|ê|É|È|Ê',
+			'i': 'í|ì|î|Í|Ì|Î',
+			'o': 'ó|ò|ô|õ|Ó|Ò|Ô|Õ',
+			'u': 'ú|ù|û|ü|Ú|Ù|Û|Ü',
+			'c': 'ç|Ç',
+			'n': 'ñ|Ñ'
+		};
 
+		for (var pattern in map) {
+			str = str.replace(new RegExp(map[pattern], 'g'), pattern);
+		};
+
+		return str;
+	}
+
+
+	function toUpperFirstLetter(str) {
+
+		return str[0].toUpperCase() + str.substr(1).toLowerCase()
+
+	}
 
 	return (
 		<>
@@ -74,21 +117,20 @@ export default function GenreList() {
 				<form onSubmit={handleSubmit} id="form">
 					<div>
 						<label> Digite o nome do cantor ou música:</label>
-						<input type="text" id="textSubmit" onChange={e => setSearchTerm(e.target.value)} />
+						<input type="text" id="textSubmit" onChange={e => setFilteredList(e.target.value)} />
 					</div>
 					<div className="button">
 						<button type="submit" onClick={handleFilter}>Pesquisar</button>
 						<button type="submit" onClick={handleCleanSearch}> Limpar</button>
 					</div>
 				</form>
+
 			</div>
+
 			<div>
-
-				{filteredMusic.length === 0 ? LISTA.map((music, indice) => {
-					const { NUMERO, CANTOR, TITULO, INICIO } = music
+				{allMusic.map(({ NUMERO, CANTOR, TITULO, INICIO }) => {
 					return (
-
-						<div key={indice} className="container">
+						<div key={NUMERO} className="container">
 							<p >
 								Código: {NUMERO}
 							</p>
@@ -105,10 +147,8 @@ export default function GenreList() {
 							<p><a href="#">Voltar para o início da lista</a></p>
 						</div>
 					)
-				})
-					: filteredMusic}
+				})}
 			</div>
-
 		</>
 	)
 }
