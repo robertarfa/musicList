@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import music from '../data/data.json'
 
 export default function GenreList() {
@@ -25,8 +25,6 @@ export default function GenreList() {
 			}
 		)
 	})
-
-	console.log(listAll)
 
 	const [allMusic, setAllMusic] = useState(listAll)
 	const [filteredList, setFilteredList] = useState('')
@@ -104,8 +102,6 @@ export default function GenreList() {
 		return str.replace(/\w\S*/g, function (txt) {
 			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 		});
-		// return str[0].toUpperCase() + str.substr(1).toLowerCase()
-
 	}
 
 	return (
