@@ -3,9 +3,6 @@ import music from '../data/data.json'
 
 export default function GenreList() {
 
-	const [allMusic, setAllMusic] = useState([])
-	const [filteredList, setFilteredList] = useState('')
-
 	const { LISTA } = music
 
 	const listAll = LISTA.map(({ NUMERO, CANTOR, TITULO, INICIO }) => {
@@ -29,10 +26,10 @@ export default function GenreList() {
 		)
 	})
 
-	useEffect(() => {
-		setAllMusic(listAll)
-	}, [])
+	console.log(listAll)
 
+	const [allMusic, setAllMusic] = useState(listAll)
+	const [filteredList, setFilteredList] = useState('')
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -85,8 +82,6 @@ export default function GenreList() {
 
 	function Slugify(str) {
 		var map = {
-			'-': ' ',
-			'-': '_',
 			'a': 'á|à|ã|â|À|Á|Ã|Â',
 			'e': 'é|è|ê|É|È|Ê',
 			'i': 'í|ì|î|Í|Ì|Î',
@@ -106,7 +101,10 @@ export default function GenreList() {
 
 	function toUpperFirstLetter(str) {
 
-		return str[0].toUpperCase() + str.substr(1).toLowerCase()
+		return str.replace(/\w\S*/g, function (txt) {
+			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+		});
+		// return str[0].toUpperCase() + str.substr(1).toLowerCase()
 
 	}
 
