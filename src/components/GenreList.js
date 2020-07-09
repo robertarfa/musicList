@@ -68,14 +68,15 @@ export default function GenreList() {
 			)
 		});
 
-		filterMusic.length === 0 ?
-			setAllMusic([{
-				NUMERO: "Não encontrado",
-				CANTOR: "Não encontrado",
-				TITULO: "Não encontrado",
-				INICIO: "Não encontrado"
-			}])
-			: setAllMusic(filterMusic);
+		// filterMusic.length === 0 ?
+		// 	setAllMusic([{
+		// 		NUMERO: "Não encontrado",
+		// 		CANTOR: "Não encontrado",
+		// 		TITULO: "Não encontrado",
+		// 		INICIO: "Não encontrado"
+		// 	}])
+		// 	:
+		setAllMusic(filterMusic);
 
 	};
 
