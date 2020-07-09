@@ -111,7 +111,7 @@ export default function GenreList() {
 				<form onSubmit={handleSubmit} id="form">
 					<div>
 						<label> Digite o nome do cantor ou música:</label>
-						<input type="text" id="textSubmit" onChange={e => setFilteredList(e.target.value)} />
+						<input type="text" id="textSubmit" onBlur={e => setFilteredList(e.target.value)} onChange={console.log("onChange")} />
 					</div>
 					<div className="button">
 						<button type="submit" onClick={handleFilter}>Pesquisar</button>
