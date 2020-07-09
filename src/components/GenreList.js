@@ -11,12 +11,14 @@ export default function GenreList() {
 				NUMERO,
 				CANTOR,
 				CantorNoAccentLower: Slugify(CANTOR.toLowerCase()),
+				CantorNoAccentUpper: Slugify(CANTOR.toUpperCase()),
 				CantorToLower: CANTOR.toLowerCase(),
 				CantorFirstUpper: toUpperFirstLetter(CANTOR),
 				CantorFirstUpperNoAccent: Slugify(toUpperFirstLetter(CANTOR)),
 				CantorToUpper: CANTOR.toUpperCase(),
 				TITULO,
 				TituloNoAccentLower: Slugify(TITULO.toLowerCase()),
+				TituloNoAccentUpper: Slugify(TITULO.toUpperCase()),
 				TituloToLower: TITULO.toLowerCase(),
 				TituloFirstUpper: toUpperFirstLetter(TITULO),
 				TituloFirstUpperNoAccent: Slugify(toUpperFirstLetter(TITULO)),
@@ -37,27 +39,31 @@ export default function GenreList() {
 		const filterMusic = listAll.filter((music) => {
 			const {
 				TituloToLower,
-				TituloFirstUpper,
-				TituloFirstUpperNoAccent,
+				// TituloFirstUpper,
+				// TituloNoAccentUpper,
+				// TituloFirstUpperNoAccent,
 				TituloNoAccentLower,
-				TituloToUpper,
+				// TituloToUpper,
 				CantorToLower,
-				CantorFirstUpper,
-				CantorFirstUpperNoAccent,
-				CantorToUpper,
-				CantorNoAccentLower
+				// CantorFirstUpper,
+				// CantorFirstUpperNoAccent,
+				// CantorToUpper,
+				CantorNoAccentLower,
+				// CantorNoAccentUpper
 			} = music
 			return (
 				(TituloToLower.includes(filteredList))
-				|| (TituloFirstUpper.includes(filteredList))
+				// || (TituloFirstUpper.includes(filteredList))
+				// || (TituloNoAccentUpper.includes(filteredList))
 				|| (TituloNoAccentLower.includes(filteredList))
-				|| (TituloFirstUpperNoAccent.includes(filteredList))
-				|| (TituloToUpper.includes(filteredList))
+				// || (TituloFirstUpperNoAccent.includes(filteredList))
+				// || (TituloToUpper.includes(filteredList))
 				|| (CantorToLower.includes(filteredList))
-				|| (CantorFirstUpper.includes(filteredList))
-				|| (CantorToUpper.includes(filteredList))
+				// || (CantorFirstUpper.includes(filteredList))
+				// || (CantorToUpper.includes(filteredList))
+				// || (CantorNoAccentUpper.includes(filteredList))
 				|| (CantorNoAccentLower.includes(filteredList))
-				|| (CantorFirstUpperNoAccent.includes(filteredList))
+				// || (CantorFirstUpperNoAccent.includes(filteredList))
 
 			)
 		});
@@ -89,13 +95,14 @@ export default function GenreList() {
 			'n': 'ñ|Ñ'
 		};
 
+		str.toUpperCase()
+
 		for (var pattern in map) {
 			str = str.replace(new RegExp(map[pattern], 'g'), pattern);
 		};
 
 		return str;
 	}
-
 
 	function toUpperFirstLetter(str) {
 
@@ -104,6 +111,8 @@ export default function GenreList() {
 		});
 	}
 
+	const handleChange = (e) => setFilteredList(e.target.value.toLowerCase())
+
 	return (
 		<>
 			<div className="input" >
@@ -111,7 +120,7 @@ export default function GenreList() {
 				<form onSubmit={handleSubmit} id="form">
 					<div>
 						<label> Digite o nome do cantor ou música:</label>
-						<input type="text" id="textSubmit" onBlur={e => setFilteredList(e.target.value)} onChange={console.log("onChange")} />
+						<input type="text" id="textSubmit" onBlur={handleChange} />
 					</div>
 					<div className="button">
 						<button type="submit" onClick={handleFilter}>Pesquisar</button>
@@ -119,6 +128,10 @@ export default function GenreList() {
 					</div>
 				</form>
 
+			</div>
+
+			<div className="span-number">
+				Quantidade de músicas disponíveis: <strong>{allMusic.length}</strong>
 			</div>
 
 			<div>
