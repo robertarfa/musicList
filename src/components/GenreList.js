@@ -10,19 +10,11 @@ export default function GenreList() {
 			{
 				NUMERO,
 				CANTOR,
-				CantorNoAccentLower: Slugify(CANTOR.toLowerCase()),
-				CantorNoAccentUpper: Slugify(CANTOR.toUpperCase()),
 				CantorToLower: CANTOR.toLowerCase(),
-				CantorFirstUpper: toUpperFirstLetter(CANTOR),
-				CantorFirstUpperNoAccent: Slugify(toUpperFirstLetter(CANTOR)),
-				CantorToUpper: CANTOR.toUpperCase(),
+				CantorNoAccentLower: Slugify(CANTOR.toLowerCase()),
 				TITULO,
-				TituloNoAccentLower: Slugify(TITULO.toLowerCase()),
-				TituloNoAccentUpper: Slugify(TITULO.toUpperCase()),
 				TituloToLower: TITULO.toLowerCase(),
-				TituloFirstUpper: toUpperFirstLetter(TITULO),
-				TituloFirstUpperNoAccent: Slugify(toUpperFirstLetter(TITULO)),
-				TituloToUpper: TITULO.toUpperCase(),
+				TituloNoAccentLower: Slugify(TITULO.toLowerCase()),
 				INICIO,
 			}
 		)
@@ -39,43 +31,19 @@ export default function GenreList() {
 		const filterMusic = listAll.filter((music) => {
 			const {
 				TituloToLower,
-				// TituloFirstUpper,
-				// TituloNoAccentUpper,
-				// TituloFirstUpperNoAccent,
 				TituloNoAccentLower,
-				// TituloToUpper,
 				CantorToLower,
-				// CantorFirstUpper,
-				// CantorFirstUpperNoAccent,
-				// CantorToUpper,
 				CantorNoAccentLower,
-				// CantorNoAccentUpper
+
 			} = music
 			return (
 				(TituloToLower.includes(filteredList))
-				// || (TituloFirstUpper.includes(filteredList))
-				// || (TituloNoAccentUpper.includes(filteredList))
 				|| (TituloNoAccentLower.includes(filteredList))
-				// || (TituloFirstUpperNoAccent.includes(filteredList))
-				// || (TituloToUpper.includes(filteredList))
 				|| (CantorToLower.includes(filteredList))
-				// || (CantorFirstUpper.includes(filteredList))
-				// || (CantorToUpper.includes(filteredList))
-				// || (CantorNoAccentUpper.includes(filteredList))
 				|| (CantorNoAccentLower.includes(filteredList))
-				// || (CantorFirstUpperNoAccent.includes(filteredList))
-
 			)
 		});
 
-		// filterMusic.length === 0 ?
-		// 	setAllMusic([{
-		// 		NUMERO: "Não encontrado",
-		// 		CANTOR: "Não encontrado",
-		// 		TITULO: "Não encontrado",
-		// 		INICIO: "Não encontrado"
-		// 	}])
-		// 	:
 		setAllMusic(filterMusic);
 
 	};
