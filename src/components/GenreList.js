@@ -123,7 +123,14 @@ export default function GenreList() {
 							<p><a href="#">Voltar para o início da lista</a></p>
 						</div>
 					)
-				})}
+				})
+					// 	.sort((a, b) => {
+					// 	console.log(a)
+					// 	console.log(b)
+					// 	// return a.CANTOR.localeCompare(b.CANTOR) //ordem alfabética
+					// 	//return a.name.length - b.name.length //pelo tamanho do nome
+					// })
+				}
 			</div>
 		</>
 	)
