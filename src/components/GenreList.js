@@ -73,12 +73,12 @@ export default function GenreList() {
 		return str;
 	}
 
-	function toUpperFirstLetter(str) {
+	// function toUpperFirstLetter(str) {
 
-		return str.replace(/\w\S*/g, function (txt) {
-			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-		});
-	}
+	// 	return str.replace(/\w\S*/g, function (txt) {
+	// 		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	// 	});
+	// }
 
 	const handleChange = (e) => setFilteredList(e.target.value.toLowerCase())
 
