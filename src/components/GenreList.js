@@ -37,13 +37,13 @@ export default function GenreList() {
         setLoading(true);
         // setAllMusic([]);
         if (activeCheckbox.cantor) {
-            setAllMusic(listAll.filter((a) => a.CantorNoAccentLower.includes(filteredList)));
+            setAllMusic(listAll.filter((a) => a.CantorNoAccentLower.includes(filteredList.trim())));
 
             fntSetLoadFalse();
         }
 
         if (activeCheckbox.titulo) {
-            setAllMusic(listAll.filter((a) => a.TituloNoAccentLower.includes(filteredList)));
+            setAllMusic(listAll.filter((a) => a.TituloNoAccentLower.includes(filteredList.trim())));
             fntSetLoadFalse();
         }
     };
