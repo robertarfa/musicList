@@ -119,33 +119,37 @@ export default function GenreList() {
                         />
                     </div>
                     <div style={{ padding: '10px', margin: '10px' }}>
-                        <input
-                            type='radio'
-                            onChange={() => {
-                                setActiveCheckbox({
-                                    cantor: true,
-                                    titulo: false,
-                                });
-                                setFilteredList('');
-                            }}
-                            value={activeCheckbox.cantor}
-                            checked={activeCheckbox.cantor}
-                        />
-                        <label>Pesquisar por cantor</label>
+                        <span style={{ padding: '10px', margin: '20px' }}>
+                            <input
+                                type='radio'
+                                onChange={() => {
+                                    setActiveCheckbox({
+                                        cantor: true,
+                                        titulo: false,
+                                    });
+                                    setFilteredList('');
+                                }}
+                                value={activeCheckbox.cantor}
+                                checked={activeCheckbox.cantor}
+                            />
+                            <label>Pesquisar por cantor</label>
+                        </span>
 
-                        <input
-                            type='radio'
-                            onChange={() => {
-                                setActiveCheckbox({
-                                    cantor: false,
-                                    titulo: true,
-                                });
-                                setFilteredList('');
-                            }}
-                            value={activeCheckbox.titulo}
-                            checked={activeCheckbox.titulo}
-                        />
-                        <label>Pesquisar por titulo</label>
+                        <span style={{ padding: '10px', margin: '20px' }}>
+                            <input
+                                type='radio'
+                                onChange={() => {
+                                    setActiveCheckbox({
+                                        cantor: false,
+                                        titulo: true,
+                                    });
+                                    setFilteredList('');
+                                }}
+                                value={activeCheckbox.titulo}
+                                checked={activeCheckbox.titulo}
+                            />
+                            <label>Pesquisar por titulo</label>
+                        </span>
                     </div>
                     <div className='button'>
                         <button type='submit' onClick={handleFilter}>
