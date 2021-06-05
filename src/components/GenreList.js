@@ -118,8 +118,8 @@ export default function GenreList() {
                             value={filteredList}
                         />
                     </div>
-                    <div style={{ padding: '10px', margin: '10px' }}>
-                        <span style={{ padding: '10px', margin: '20px' }}>
+                    <div style={{ padding: '10px', margin: '10px', textAlign: 'center' }}>
+                        <div style={{ padding: '10px', margin: '10px' }}>
                             <input
                                 type='radio'
                                 onChange={() => {
@@ -133,9 +133,9 @@ export default function GenreList() {
                                 checked={activeCheckbox.cantor}
                             />
                             <label>Pesquisar por cantor</label>
-                        </span>
+                        </div>
 
-                        <span style={{ padding: '10px', margin: '20px' }}>
+                        <div style={{ padding: '10px', margin: '10px' }}>
                             <input
                                 type='radio'
                                 onChange={() => {
@@ -149,7 +149,7 @@ export default function GenreList() {
                                 checked={activeCheckbox.titulo}
                             />
                             <label>Pesquisar por titulo</label>
-                        </span>
+                        </div>
                     </div>
                     <div className='button'>
                         <button type='submit' onClick={handleFilter}>
