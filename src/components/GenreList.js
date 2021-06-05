@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import music from '../data/data.json';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
