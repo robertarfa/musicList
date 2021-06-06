@@ -114,7 +114,7 @@ export default function GenreList() {
                             type='text'
                             id='textSubmit'
                             onChange={handleChange}
-                            value={filteredList}
+                            value={filteredList?.toUpperCase()}
                         />
                     </div>
                     <div style={{ padding: '10px', margin: '10px', textAlign: 'center' }}>
