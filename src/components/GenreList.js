@@ -126,7 +126,7 @@ export default function GenreList() {
                                         cantor: true,
                                         titulo: false,
                                     });
-                                    setFilteredList('');
+                                    // setFilteredList('');
                                 }}
                                 value={activeCheckbox.cantor}
                                 checked={activeCheckbox.cantor}
@@ -142,7 +142,7 @@ export default function GenreList() {
                                         cantor: false,
                                         titulo: true,
                                     });
-                                    setFilteredList('');
+                                    // setFilteredList('');
                                 }}
                                 value={activeCheckbox.titulo}
                                 checked={activeCheckbox.titulo}
