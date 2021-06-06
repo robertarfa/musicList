@@ -11,11 +11,11 @@ export default function GenreList() {
         return {
             NUMERO,
             CANTOR,
-            // CantorToLower: CANTOR.toUpperCase(),
-            CantorNoAccentLower: Slugify(CANTOR.toUpperCase()),
+            // CantorToLower: CANTOR.toLowerCase(),
+            CantorNoAccentLower: slugify(CANTOR.toLowerCase()),
             TITULO,
-            // TituloToLower: TITULO.toUpperCase(),
-            TituloNoAccentLower: Slugify(TITULO.toUpperCase()),
+            // TituloToLower: TITULO.toLowerCase(),
+            TituloNoAccentLower: slugify(TITULO.toLowerCase()),
             INICIO,
         };
     });
@@ -33,7 +33,6 @@ export default function GenreList() {
     };
 
     const handleFilter = () => {
-        // console.log('logs listAll', listAll[0]);
         setLoading(true);
         // setAllMusic([]);
         if (activeCheckbox.cantor) {
@@ -63,7 +62,7 @@ export default function GenreList() {
         fntSetLoadFalse();
     };
 
-    function Slugify(str) {
+    function slugify(str) {
         var map = {
             a: 'á|à|ã|â|À|Á|Ã|Â',
             e: 'é|è|ê|É|È|Ê',
@@ -74,7 +73,7 @@ export default function GenreList() {
             n: 'ñ|Ñ',
         };
 
-        str.toUpperCase();
+        str.toLowerCase();
 
         for (var pattern in map) {
             str = str.replace(new RegExp(map[pattern], 'g'), pattern);
@@ -83,7 +82,7 @@ export default function GenreList() {
         return str;
     }
 
-    const handleChange = (e) => setFilteredList(e.target.value.toUpperCase());
+    const handleChange = (e) => setFilteredList(slugify(e.target.value.toLowerCase()));
 
     if (loading) {
         return (
@@ -99,7 +98,7 @@ export default function GenreList() {
         );
     }
 
-    // console.log('logs allMusic', { allMusic, loading });
+    // console.log('logs allMusic', { filteredList, allMusic });
 
     return (
         <>
